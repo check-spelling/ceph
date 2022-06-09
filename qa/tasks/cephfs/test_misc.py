@@ -426,7 +426,7 @@ class TestCacheDrop(CephFSTestCase):
         # cache now causes the Locker to drive eviction of stale clients (a
         # stale session will be autoclosed at mdsmap['session_timeout']). The
         # particular operation causing this is journal flush which causes the
-        # MDS to wait wait for cap revoke.
+        # MDS to wait for cap revoke.
         #self.assertEqual(0, result['trim_cache']['trimmed'])
         self.mount_a.resume_netns()
 
@@ -447,5 +447,5 @@ class TestCacheDrop(CephFSTestCase):
         # cache now causes the Locker to drive eviction of stale clients (a
         # stale session will be autoclosed at mdsmap['session_timeout']). The
         # particular operation causing this is journal flush which causes the
-        # MDS to wait wait for cap revoke.
+        # MDS to wait for cap revoke.
         self.mount_a.resume_netns()
