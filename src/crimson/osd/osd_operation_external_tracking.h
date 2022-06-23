@@ -149,28 +149,28 @@ struct EventBackendRegistry<osd::ClientRequest> {
 template <>
 struct EventBackendRegistry<osd::RemotePeeringEvent> {
   static std::tuple<> get_backends() {
-    return {/* no extenral backends */};
+    return {/* no external backends */};
   }
 };
 
 template <>
 struct EventBackendRegistry<osd::LocalPeeringEvent> {
   static std::tuple<> get_backends() {
-    return {/* no extenral backends */};
+    return {/* no external backends */};
   }
 };
 
 template <>
 struct EventBackendRegistry<osd::RepRequest> {
   static std::tuple<> get_backends() {
-    return {/* no extenral backends */};
+    return {/* no external backends */};
   }
 };
 
 template <>
 struct EventBackendRegistry<osd::RecoverySubRequest> {
   static std::tuple<> get_backends() {
-    return {/* no extenral backends */};
+    return {/* no external backends */};
   }
 };
 
