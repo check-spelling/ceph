@@ -4348,7 +4348,7 @@ int RGWRunBucketSourcesSyncCR::operate(const DoutPrefixProvider *dpp)
 
       for (; num_shards > 0; --num_shards, ++cur_shard) {
         /*
-         * use a negatvie shard_id for backward compatibility,
+         * use a negative shard_id for backward compatibility,
          * this affects the crafted status oid
          */
         sync_pair.source_bs.shard_id = (source_num_shards > 0 ? cur_shard : -1);
