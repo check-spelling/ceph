@@ -2162,14 +2162,14 @@ int RGWRados::Bucket::List::list_objects_unordered(const DoutPrefixProvider *dpp
 
       if (!params.list_versions && !entry.is_visible()) {
         ldpp_dout(dpp, 20) << __PRETTY_FUNCTION__ <<
-	  ": skippping \"" << index_key <<
+	  ": skipping \"" << index_key <<
 	  "\" because not listing versions and entry not visibile" << dendl;
         continue;
       }
 
       if (params.enforce_ns && obj.ns != params.ns) {
         ldpp_dout(dpp, 20) << __PRETTY_FUNCTION__ <<
-	  ": skippping \"" << index_key <<
+	  ": skipping \"" << index_key <<
 	  "\" because namespace does not match" << dendl;
         continue;
       }
@@ -2178,7 +2178,7 @@ int RGWRados::Bucket::List::list_objects_unordered(const DoutPrefixProvider *dpp
 	// we're not guaranteed items will come in order, so we have
 	// to loop through all
         ldpp_dout(dpp, 20) << __PRETTY_FUNCTION__ <<
-	  ": skippping \"" << index_key <<
+	  ": skipping \"" << index_key <<
 	  "\" because after end_marker" << dendl;
 	continue;
       }
@@ -2186,7 +2186,7 @@ int RGWRados::Bucket::List::list_objects_unordered(const DoutPrefixProvider *dpp
       if (params.access_list_filter &&
 	  !params.access_list_filter->filter(obj.name, index_key.name)) {
         ldpp_dout(dpp, 20) << __PRETTY_FUNCTION__ <<
-	  ": skippping \"" << index_key <<
+	  ": skipping \"" << index_key <<
 	  "\" because doesn't match filter" << dendl;
         continue;
       }
@@ -2194,7 +2194,7 @@ int RGWRados::Bucket::List::list_objects_unordered(const DoutPrefixProvider *dpp
       if (params.prefix.size() &&
 	  (0 != obj.name.compare(0, params.prefix.size(), params.prefix))) {
         ldpp_dout(dpp, 20) << __PRETTY_FUNCTION__ <<
-	  ": skippping \"" << index_key <<
+	  ": skipping \"" << index_key <<
 	  "\" because doesn't match prefix" << dendl;
 	continue;
       }
