@@ -77,7 +77,7 @@ class Watchers:
                 self.updated[watch_id] = True
 
         def error_callback(watch_id: int, error: str) -> None:
-            self.log.debug("watcher {}: got errror {}".format(
+            self.log.debug("watcher {}: got error {}".format(
                 watch_id, error))
 
             with self.lock:
