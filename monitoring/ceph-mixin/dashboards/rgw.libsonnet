@@ -54,7 +54,7 @@ local u = import 'utils.libsonnet';
         type='panel', id='graph', name='Graph', version='5.0.0'
       )
       .addTemplate(
-        u.addTemplateSchema('rgw_servers', '$datasource', 'prometehus', 1, true, 1, '', '')
+        u.addTemplateSchema('rgw_servers', '$datasource', 'prometheus', 1, true, 1, '', '')
       )
       .addTemplate(
         g.template.datasource('datasource', 'prometheus', 'default', label='Data Source')

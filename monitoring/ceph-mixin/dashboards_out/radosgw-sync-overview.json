@@ -401,7 +401,7 @@
             "multi": false,
             "name": "rgw_servers",
             "options": [ ],
-            "query": "prometehus",
+            "query": "prometheus",
             "refresh": 1,
             "regex": "",
             "sort": 1,
