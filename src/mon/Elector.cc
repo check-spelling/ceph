@@ -714,7 +714,7 @@ void Elector::notify_rank_removed(int rank_removed)
   /* we have to clean up the pinging state, which is annoying
      because it's not indexed anywhere (and adding indexing
      would also be annoying). So what we do is start with the
-     remoed rank and examine the state of the surrounding ranks.
+     removed rank and examine the state of the surrounding ranks.
      Everybody who remains with larger rank gets a new rank one lower
      than before, and we have to figure out the remaining scheduled
      ping contexts. So, starting one past with the removed rank, we:
