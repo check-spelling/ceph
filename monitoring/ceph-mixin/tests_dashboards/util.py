@@ -80,7 +80,7 @@ def add_dashboard_variables(data: Dict[str, Any], dashboard_data: Dict[str, Any]
 def replace_grafana_expr_variables(expr: str, variable: str, value: Any) -> str:
     """ Replace grafana variables in expression with a value
 
-    It should match the whole word, 'osd' musn't match with the 'osd' prefix in 'osd_hosts'
+    It should match the whole word, 'osd' mustn't match with the 'osd' prefix in 'osd_hosts'
     >>> replace_grafana_expr_variables('metric{name~="$osd_hosts|$other|$osd"}', \
         'osd', 'replacement')
     'metric{name~="$osd_hosts|$other|replacement"}'
