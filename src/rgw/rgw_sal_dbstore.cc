@@ -1335,7 +1335,7 @@ namespace rgw::sal {
         return 0; /* nothing more to write */
       }
 
-      /* flush watever tail data is present */
+      /* flush whatever tail data is present */
       int ret = parent_op.write_data(dpp, tail_part_data, tail_part_offset);
       if (ret < 0) {
         return ret;
@@ -1493,7 +1493,7 @@ namespace rgw::sal {
         return 0; /* nothing more to write */
       }
 
-      /* flush watever tail data is present */
+      /* flush whatever tail data is present */
       int ret = parent_op.write_data(dpp, tail_part_data, tail_part_offset);
       if (ret < 0) {
         return ret;
