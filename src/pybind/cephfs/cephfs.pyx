@@ -863,7 +863,7 @@ cdef class LibCephFS(object):
 
     def lazyio_propagate(self, fd, offset, count):
         """
-        Flushes the write buffer for the file thereby propogating the buffered write to the file.
+        Flushes the write buffer for the file thereby propagating the buffered write to the file.
 
         :param fd: the file descriptor of the file to sync.
         :param offset: the byte range starting.
@@ -1176,7 +1176,7 @@ cdef class LibCephFS(object):
 
     def snap_info(self, path) -> Dict[str, Any]:
         """
-        Fetch sapshot info
+        Fetch snapshot info
 
         :param path: snapshot path
 

@@ -130,7 +130,7 @@
 #define O_DIRECT 0x0
 #endif
 
-// Windows doesn't define those values. While the Posix compatibilty layer
+// Windows doesn't define those values. While the Posix compatibility layer
 // doesn't support those values, the Windows native functions do provide
 // similar flags. Special care should be taken if we're going to use those
 // flags in ceph-dokan. The current values are no-ops, while propagating
@@ -419,7 +419,7 @@ Client::~Client()
   ceph_assert(ceph_mutex_is_not_locked(client_lock));
 
   // If the task is crashed or aborted and doesn't
-  // get any chance to run the umount and shutdow.
+  // get any chance to run the umount and shutdown.
   {
     std::scoped_lock l{client_lock};
     tick_thread_stopped = true;
@@ -681,7 +681,7 @@ void Client::shutdown()
   {
     std::scoped_lock l{client_lock};
 
-    // To make sure the tick thread will be stoppped before
+    // To make sure the tick thread will be stopped before
     // destructing the Client, just in case like the _mount()
     // failed but didn't not get a chance to stop the tick
     // thread
@@ -730,7 +730,7 @@ void Client::shutdown()
    * We are shuting down the client.
    *
    * Just declare the state to CLIENT_NEW to block and fail any
-   * new comming "reader" and then try to wait all the in-flight
+   * new coming "reader" and then try to wait all the in-flight
    * "readers" to finish.
    */
   RWRef_t iref_writer(initialize_state, CLIENT_NEW, false);
@@ -1124,7 +1124,7 @@ Inode * Client::add_update_inode(InodeStat *st, utime_t from,
     ldout(cct, 12) << __func__ << " adding " << *in << " caps " << ccap_string(st->cap.caps) << dendl;
 
   if (!st->cap.caps)
-    return in;   // as with readdir returning indoes in different snaprealms (no caps!)
+    return in;   // as with readdir returning inodes in different snaprealms (no caps!)
 
   if (in->snapid == CEPH_NOSNAP) {
     add_update_cap(in, session, st->cap.cap_id, st->cap.caps, st->cap.wanted,
@@ -2439,7 +2439,7 @@ void Client::handle_client_session(const MConstRef<MClientSession>& m)
   case CEPH_SESSION_RECALL_STATE:
     /*
      * Call the renew caps and flush cap releases just before
-     * triming the caps in case the tick() won't get a chance
+     * trimming the caps in case the tick() won't get a chance
      * to run them, which could cause the client to be blocklisted
      * and MDS daemons trying to recall the caps again and
      * again.
@@ -2846,7 +2846,7 @@ void Client::handle_osd_map(const MConstRef<MOSDMap>& m)
 
     _abort_mds_sessions(-CEPHFS_EBLOCKLISTED);
 
-    // Since we know all our OSD ops will fail, cancel them all preemtively,
+    // Since we know all our OSD ops will fail, cancel them all preemptively,
     // so that on an unhealthy cluster we can umount promptly even if e.g.
     // some PGs were inaccessible.
     objecter->op_cancel_writes(-CEPHFS_EBLOCKLISTED);
@@ -3605,7 +3605,7 @@ void Client::put_cap_ref(Inode *in, int cap)
 // get caps for a given file handle -- the inode should have @need caps
 // issued by the mds and @want caps not revoked (or not under revocation).
 // this routine blocks till the cap requirement is satisfied. also account
-// (track) for capability hit when required (when cap requirement succeedes).
+// (track) for capability hit when required (when cap requirement succeeds).
 int Client::get_caps(Fh *fh, int need, int want, int *phave, loff_t endoff)
 {
   Inode *in = fh->inode.get();
@@ -6619,7 +6619,7 @@ void Client::_unmount(bool abort)
    * We are unmounting the client.
    *
    * Just declare the state to STATE_UNMOUNTING to block and fail
-   * any new comming "reader" and then try to wait all the in-flight
+   * any new coming "reader" and then try to wait all the in-flight
    * "readers" to finish.
    */
   RWRef_t mref_writer(mount_state, CLIENT_UNMOUNTING, false);
@@ -11116,7 +11116,7 @@ int Client::fsync(int fd, bool syncdataonly)
   int r = _fsync(f, syncdataonly);
   if (r == 0) {
     // The IOs in this fsync were okay, but maybe something happened
-    // in the background that we shoudl be reporting?
+    // in the background that we should be reporting?
     r = f->take_async_err();
     ldout(cct, 5) << "fsync(" << fd << ", " << syncdataonly
                   << ") = 0, async_err = " << r << dendl;
@@ -11337,7 +11337,7 @@ void Client::_getcwd(string& dir, const UserPerm& perms)
   while (in != root.get()) {
     ceph_assert(in->dentries.size() < 2); // dirs can't be hard-linked
 
-    // A cwd or ancester is unlinked
+    // A cwd or ancestor is unlinked
     if (in->dentries.empty()) {
       return;
     }

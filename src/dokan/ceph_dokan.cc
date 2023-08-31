@@ -216,7 +216,7 @@ static NTSTATUS WinCephCreateFile(
              << ": Unsupported st_mode: " << stbuf.stx_mode << dendl;
       return STATUS_BAD_FILE_TYPE;
     }
-  } else { // The file doens't exist.
+  } else { // The file doesn't exist.
     if (DokanFileInfo->IsDirectory) {
       // TODO: check create disposition.
       dout(20) << __func__ << " " << path << ". New directory." << dendl;
@@ -880,7 +880,7 @@ NTSTATUS get_volume_serial(PDWORD serial) {
   int ret = ceph_getxattr(cmount, "/", "ceph.cluster_fsid",
                           fsid_str, sizeof(fsid_str));
   if (ret < 0) {
-    dout(2) << "Coudln't retrieve the cluster fsid. Error: " << ret << dendl;
+    dout(2) << "Couldn't retrieve the cluster fsid. Error: " << ret << dendl;
     return cephfs_errno_to_ntstatus_map(ret);
   }
 

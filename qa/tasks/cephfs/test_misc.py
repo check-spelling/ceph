@@ -216,7 +216,7 @@ class TestMisc(CephFSTestCase):
         info = self.fs.mds_asok(['dump', 'inode', '1'])
         self.assertEqual(info['path'], "/")
 
-    def test_dump_inode_hexademical(self):
+    def test_dump_inode_hexadecimal(self):
         self.mount_a.run_shell(["mkdir", "-p", "foo"])
         ino = self.mount_a.path_to_ino("foo")
         self.assertTrue(type(ino) is int)
@@ -570,7 +570,7 @@ class TestCacheDrop(CephFSTestCase):
         # cache now causes the Locker to drive eviction of stale clients (a
         # stale session will be autoclosed at mdsmap['session_timeout']). The
         # particular operation causing this is journal flush which causes the
-        # MDS to wait wait for cap revoke.
+        # MDS to wait for cap revoke.
         #self.assertEqual(0, result['trim_cache']['trimmed'])
         self.mount_a.resume_netns()
 
@@ -591,7 +591,7 @@ class TestCacheDrop(CephFSTestCase):
         # cache now causes the Locker to drive eviction of stale clients (a
         # stale session will be autoclosed at mdsmap['session_timeout']). The
         # particular operation causing this is journal flush which causes the
-        # MDS to wait wait for cap revoke.
+        # MDS to wait for cap revoke.
         self.mount_a.resume_netns()
 
 class TestSkipReplayInoTable(CephFSTestCase):

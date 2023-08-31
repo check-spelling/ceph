@@ -245,7 +245,7 @@ public:
    * prepare_write
    *
    * Called prior to reading buffer.
-   * Implemenation may use this callback to fully write out
+   * Implementation may use this callback to fully write out
    * updates to the buffer.
    */
   virtual void prepare_write() {}
@@ -254,7 +254,7 @@ public:
    * on_initial_write
    *
    * Called after commit of extent.  State will be CLEAN.
-   * Implentation may use this call to fixup the buffer
+   * Implementation may use this call to fixup the buffer
    * with the newly available absolute get_paddr().
    */
   virtual void on_initial_write() {}
@@ -263,7 +263,7 @@ public:
    * on_clean_read
    *
    * Called after read of initially written extent.
-   *  State will be CLEAN. Implentation may use this
+   *  State will be CLEAN. Implementation may use this
    * call to fixup the buffer with the newly available
    * absolute get_paddr().
    */
@@ -273,8 +273,8 @@ public:
    * on_delta_write
    *
    * Called after commit of delta.  State will be DIRTY.
-   * Implentation may use this call to fixup any relative
-   * references in the the buffer with the passed
+   * Implementation may use this call to fixup any relative
+   * references in the buffer with the passed
    * record_block_offset record location.
    */
   virtual void on_delta_write(paddr_t record_block_offset) {}
@@ -452,7 +452,7 @@ public:
     return !is_valid() || (is_mutation_pending() && !prior_instance->is_valid());
   }
 
-  /// Returns true if extent is a plcaeholder
+  /// Returns true if extent is a placeholder
   bool is_placeholder() const {
     return get_type() == extent_types_t::RETIRED_PLACEHOLDER;
   }

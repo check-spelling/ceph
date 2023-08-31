@@ -148,7 +148,7 @@ using backref_entry_query_set_t = std::set<
  * 1) construction: user calls Cache::get_transaction() and populates
  *    the returned transaction by calling Cache methods
  * 2) submission: user calls Cache::try_start_transaction().  If
- *    succcessful, the user may construct a record and submit the
+ *    successful, the user may construct a record and submit the
  *    transaction to the journal.
  * 3) completion: once the transaction is durable, the user must call
  *    Cache::complete_commit() with the block offset to complete
@@ -1483,7 +1483,7 @@ private:
   /// Add extent to extents handling dirty and refcounting
   void add_extent(CachedExtentRef ref, const Transaction::src_t* t_src);
 
-  /// Mark exising extent ref dirty -- mainly for replay
+  /// Mark existing extent ref dirty -- mainly for replay
   void mark_dirty(CachedExtentRef ref);
 
   /// Add dirty extent to dirty list

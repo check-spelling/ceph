@@ -51,7 +51,7 @@ std::optional<record_t> decode_record(
     for (auto e : iter.extent_infos) {
       extent_t ex;
       auto bptr = bufferptr(ceph::buffer::create_page_aligned(e.len));
-      logger().debug(" exten len {} remaining {} ", e.len, bliter_ex.get_remaining());
+      logger().debug(" extent len {} remaining {} ", e.len, bliter_ex.get_remaining());
       bliter_ex.copy(e.len, bptr.c_str());
       ex.bl.append(bptr);
       record.extents.push_back(ex);
@@ -371,7 +371,7 @@ TEST_F(cbjournal_test_t, submit_full_records)
     ASSERT_EQ(get_records_total_size(),
 	     get_records_available_size());
 
-    // will be appended at the begining of log
+    // will be appended at the beginning of log
     submit_record(
      record_t {
       { generate_extent(1), generate_extent(2) },
@@ -389,7 +389,7 @@ TEST_F(cbjournal_test_t, submit_full_records)
   });
 }
 
-TEST_F(cbjournal_test_t, boudary_check_verify)
+TEST_F(cbjournal_test_t, boundary_check_verify)
 {
   run_async([this] {
     record_t rec {
@@ -414,7 +414,7 @@ TEST_F(cbjournal_test_t, boudary_check_verify)
     entries.erase(entries.begin());
     ASSERT_EQ(avail + (record_total_size * 2), get_records_available_size());
     avail = get_records_available_size();
-    // will be appended at the begining of WAL
+    // will be appended at the beginning of WAL
     submit_record(
      record_t {
       { generate_extent(1), generate_extent(2) },
@@ -464,7 +464,7 @@ TEST_F(cbjournal_test_t, replay)
        { generate_delta(20), generate_delta(21) }
        });
     }
-    // will be appended at the begining of WAL
+    // will be appended at the beginning of WAL
     uint64_t avail = get_records_available_size();
     update_journal_tail(entries.front().addr, record_total_size * 2);
     entries.erase(entries.begin());
